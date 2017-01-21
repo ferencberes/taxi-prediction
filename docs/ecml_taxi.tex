@@ -195,7 +195,7 @@ I trained two regression models. One for the latitude coordinate and another for
 
 Figure~\ref{fig:gbt_imp} shows feature importances of the GBT models using 40 tree with 5 depth each.
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[scale=0.6]{img/lat_gbt.png}
 \includegraphics[scale=0.6]{img/lng_gbt.png}
@@ -259,8 +259,23 @@ We can see that the mean predictor and the $k$-NN predictor have similar perform
 \label{fig:result_pred}
 \end{figure}
 
+\section{Implementation}
+
+In this project I used \emph{Python} (pandas, numpy, sklearn). The data preparation, model selection and final destination prediction are implemented in different \emph{Jupyter} notebooks.
+
+\vspace{12pt}
+
+The notebooks of this project are organized into a \textbf{Datawand} pipeline. \emph{Datawand} is my custom Jupyter notebook manager framework, not yet publically available. With \emph{Datawand} I can schedule and parametrize notebooks based on custom configuration. On Figure~\ref{fig:luigi_dep} you can see the dependencies between different tasks of the pipeline.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.3]{img/luigi_plan.png}
+\caption{Pipeline dependencies}
+\label{fig:luigi_dep}
+\end{figure}
+
 \section{Summary}
 
-In this project I solved the problem of taxi route destination prediction. I propose a two-phase modeling framework. The first model is a GBT which use rounded GPS locations. In the second phase I use several $2$-NN models to predict the final destination based on the output of the GBT model. With this setting I could achieve approximately $173$ meter mean error for Haversine distance.   
+In this project I solved the problem of taxi route destination prediction. I propose a two-phase modeling framework. The first model is a GBT which use rounded GPS locations. In the second phase I use several $2$-NN models to predict the final destination based on the output of the GBT model. With this setting I could achieve approximately $173$ meter mean error for Haversine distance.  
 
 \end{document}
