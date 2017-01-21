@@ -1,0 +1,101 @@
+{
+   "config_path": "/mnt/61cb6df7-f940-4d96-95b3-7f435bd01376/sztaki/git/fberes/ecml-taxi/pipelines/EcmlTaxi.json", 
+   "default_config": {
+      "data_folder": "/home/fberes/FBDATA/DATA/taxi-challange/", 
+      "gbt_use_exact_lat": false, 
+      "gbt_use_exact_lng": false, 
+      "is_test": false, 
+      "lat_digits": 3, 
+      "lng_digits": 2, 
+      "part": "_50000"
+   }, 
+   "description": "Experimenting with the Kaggle ECML Challange 2015. The task was to build models for taxi route destination prediction.", 
+   "id": "0", 
+   "name": "EcmlTaxi", 
+   "notebooks": [
+      {
+         "config": {
+            "is_test": false
+         }, 
+         "dependencies": [
+            "DataSplitterAndDecoder"
+         ], 
+         "is_clone": "no", 
+         "kernel_id": null, 
+         "kernel_status": "Offline", 
+         "kernel_type": "py2-env", 
+         "name": "FeatureGenerator", 
+         "path": "ipython/FeatureGenerator.ipynb", 
+         "pipeline_status": "off", 
+         "session_id": null, 
+         "type": "Preprocessor"
+      }, 
+      {
+         "config": {
+            "depth": 5, 
+            "export_prediction": true, 
+            "num_trees": 40
+         }, 
+         "dependencies": [
+            "FeatureGenerator"
+         ], 
+         "is_clone": "no", 
+         "kernel_id": null, 
+         "kernel_status": "Offline", 
+         "kernel_type": "py2-env", 
+         "name": "GBTModelBuilder", 
+         "path": "ipython/GBTModelBuilder.ipynb", 
+         "pipeline_status": "on", 
+         "session_id": null, 
+         "type": "Modeling"
+      }, 
+      {
+         "dependencies": [
+            "GBTModelBuilder"
+         ], 
+         "is_clone": "no", 
+         "kernel_id": null, 
+         "kernel_status": "Offline", 
+         "kernel_type": "py2-env", 
+         "name": "DestinationSpecialization", 
+         "path": "ipython/DestinationSpecialization.ipynb", 
+         "pipeline_status": "on", 
+         "session_id": null, 
+         "type": "Modeling"
+      }, 
+      {
+         "is_clone": "no", 
+         "kernel_id": null, 
+         "kernel_status": "Offline", 
+         "kernel_type": "py2-env", 
+         "name": "TaxiParams", 
+         "path": "pipelines/TaxiParams.ipynb", 
+         "pipeline_status": "off", 
+         "session_id": null, 
+         "type": "Parameters"
+      }, 
+      {
+         "is_clone": "no", 
+         "kernel_id": null, 
+         "kernel_status": "Offline", 
+         "kernel_type": "py2-env", 
+         "name": "DataSplitterAndDecoder", 
+         "path": "ipython/DataSplitterAndDecoder.ipynb", 
+         "pipeline_status": "off", 
+         "session_id": null, 
+         "type": "Preprocessor"
+      }, 
+      {
+         "is_clone": "no", 
+         "kernel_id": null, 
+         "kernel_status": "Offline", 
+         "kernel_type": "py2-env", 
+         "name": "DataAnalysis", 
+         "path": "ipython/ExplanatoryDataAnalysis.ipynb", 
+         "pipeline_status": "off", 
+         "session_id": null, 
+         "type": "Analyzer"
+      }
+   ], 
+   "reports": []
+}
